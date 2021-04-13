@@ -36,11 +36,12 @@ public class ItzCore extends Plugin {
             }
         });
     }
-    public <T> T getProvider(Class<T> provider) {
+    @SuppressWarnings("unchecked")
+    public <T> T getProvider(Class<T> provider) throws ClassCastException {
         Class<?> clazz = null;
         for(Class<?> clas : providerType)
             clazz = clas.getCanonicalName().equals(provider.getCanonicalName()) && clazz == null ? clas : null;
-        return (T) clazz.cast(apiProviders.get(clazz));
+        return clazz != null ? (T) clazz.cast(apiProviders.get(clazz)) : null;
     }
 
 }
