@@ -27,7 +27,7 @@ public class ClassFinder {
                 String classname = file.replace('/', '.').substring(0, file.length() - 6);
 
                 try {
-                    Class<?> c = Class.forName(classname);
+                    Class<?> c = Class.forName(classname, false, ItzCore.class.getClassLoader());
                     classes.add(c);
                 } catch (Throwable e) {
                     System.out.println("WARNING: failed to instantiate " + classname + " from " + file);
