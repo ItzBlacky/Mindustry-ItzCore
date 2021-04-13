@@ -36,11 +36,11 @@ public class ItzCore extends Plugin {
             }
         });
     }
-    public <T> T getProvider(String providerName) {
+    public <T> T getProvider(Class<T> provider) {
         Class<?> clazz = null;
         for(Class<?> clas : providerType)
-            clazz = clas.getSimpleName().equals(providerName) && clazz == null ? clas : null;
-        Object o = providerType.get(1).cast(apiProviders.get(clazz));
+            clazz = clas.getCanonicalName().equals(provider.getCanonicalName()) && clazz == null ? clas : null;
+        return (T) clazz.cast(apiProviders.get(clazz));
     }
 
 }
