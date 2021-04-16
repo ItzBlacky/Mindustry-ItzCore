@@ -15,6 +15,7 @@ ext{
 dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
     compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.28'
 }
 
 jar {
