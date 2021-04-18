@@ -1,6 +1,6 @@
 package me.itzblacky.ItzCore.DependencyInterface;
 
-import me.itzblacky.ItzCore.DependencyInterface.Utils.Group;
+import me.itzblacky.ItzCore.DependencyInterface.Utils.IGroup;
 import mindustry.gen.Player;
 
 import java.util.LinkedList;
@@ -15,6 +15,6 @@ public interface Permission {
     boolean isInGroup(Player player);
     boolean addToGroup(Player player);
     List<String> getGroups(Player player);
-    List<Group> getGroupList();
-    LinkedList<Group> getOrderedGroupList();
+    List<IGroup> getGroupList();
+    LinkedList<IGroup> getOrderedGroupList();
 }

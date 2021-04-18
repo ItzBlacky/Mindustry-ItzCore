@@ -4,12 +4,14 @@ import mindustry.gen.Player;
 
 import java.util.List;
 
-public interface Group {
+public interface IGroup {
+
     boolean hasPermission(String permission);
-    boolean givePermission(String permission);
+    void givePermission(String permission);
     boolean removePermission(String permission);
+    void addSubGroups();
+
     List<String> getPermissions();
-    List<Group> getSuperGroups();
-    List<Group> getSubGroups();
+    List<IGroup> getSubGroups();
     List<Player> getMembers();
 }

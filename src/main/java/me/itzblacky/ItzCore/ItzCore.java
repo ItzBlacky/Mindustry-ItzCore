@@ -2,20 +2,16 @@ package me.itzblacky.ItzCore;
 
 
 import arc.Events;
+import arc.util.CommandHandler;
+import arc.util.Log;
 import me.itzblacky.ItzCore.Utils.ClassFinder;
-import me.itzblacky.ItzCore.Utils.Config;
 import mindustry.Vars;
 
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.mod.Mods;
 import mindustry.mod.Plugin;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +32,26 @@ public class ItzCore extends Plugin {
             for (Mods.LoadedMod mod : mods.list()) {
                 for (Class<?> clas : providerType) {
                     if (!clas.isAssignableFrom(mod.main.getClass())) continue;
-
+                    Log.info("ItzCore: Found provider " + mod.name + " for feature " + clas.getSimpleName());
                     apiProviders.put(clas, mod.main);
                 }
             }
         });
+        Log.info("ItzCore: No feature provider found.");
     }
+
+    @Override
+    public void registerServerCommands(CommandHandler handler) {
+        handler.register("itzcoretest", "test ItzCore", args -> {
+           for(Map.Entry<Class<?>, Mod> entry : apiProviders.entrySet()) {
+               Log.info("Found provider: " + entry.getKey().getCanonicalName() + " .. " + entry.getValue().getClass().getCanonicalName());
+           }
+           for(Class<?> claz : providerType) {
+               Log.info("Provider type: " + claz.getCanonicalName());
+           }
+        });
+    }
+
     @SuppressWarnings("unchecked")
     public <T> T getProvider(Class<T> provider) throws ClassCastException {
         Class<?> clazz = null;
