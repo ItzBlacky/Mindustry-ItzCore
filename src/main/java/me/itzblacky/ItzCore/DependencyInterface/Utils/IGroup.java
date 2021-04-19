@@ -9,9 +9,9 @@ public interface IGroup {
     boolean hasPermission(String permission);
     void givePermission(String permission);
     void removePermission(String permission);
-    void addSubGroups(IGroup group);
+    void addSubGroup(IGroup group);
+    void removeSubGroup(IGroup group);
 
     List<String> getPermissions();
     List<IGroup> getSubGroups();
-    List<Player> getMembers();
 }
