@@ -3,7 +3,7 @@ package me.itzblacky.ItzCore.DependencyInterface.Utils;
 
 import java.util.List;
 
-public interface User {
+public interface IUser {
     void setUUID(String uuid);
     void setGroup(IGroup group);
     void setPermission(String permission);
