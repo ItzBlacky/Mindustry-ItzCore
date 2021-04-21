@@ -10,6 +10,6 @@ public interface IUser {
     void removePermission(String permission);
 
     String getUUID();
+    IGroup getGroup();
     List<String> getPermissions();
-    List<IGroup> getGroups();
 }

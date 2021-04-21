@@ -12,6 +12,7 @@ public interface IGroup {
     void addSubGroup(IGroup group);
     void removeSubGroup(IGroup group);
 
+    String getName();
     List<String> getPermissions();
     List<IGroup> getSubGroups();
 }
