@@ -8,9 +8,8 @@ public interface IGroup {
     void setPermission(String permission);
     void removePermission(String permission);
 
-    void addSubGroup(IGroup group);
-    void removeSubGroup(IGroup group);
+    void setSubGroup(IGroup group);
 
     String getName();
-    List<IGroup> getSubGroups();
+    IGroup getSubGroup();
 }

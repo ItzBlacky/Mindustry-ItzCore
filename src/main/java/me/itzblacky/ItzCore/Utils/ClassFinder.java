@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.stream.Collectors;
 
 public class ClassFinder {
     public static List<Class<?>> find(String packagePath) {
@@ -39,11 +40,6 @@ public class ClassFinder {
         return classes;
     }
     public static List<Class<?>> findInterface(String packagePath) {
-        List<Class<?>> classes = find(packagePath);
-        List<Class<?>> toReturn = new ArrayList<>();
-        for(Class<?> clas : classes) {
-            if(clas.isInterface()) toReturn.add(clas);
-        }
-        return toReturn;
+        return find(packagePath).stream().filter(Class::isInterface).collect(Collectors.toList());
     }
 }
