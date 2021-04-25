@@ -14,7 +14,6 @@ public interface Permission {
     IUser getUser(String uuid);
 
     IGroup getGroup(String name);
-    IGroup getGroup(int id);
 
     void addUser(IUser user);
     void addGroup(IGroup group);
