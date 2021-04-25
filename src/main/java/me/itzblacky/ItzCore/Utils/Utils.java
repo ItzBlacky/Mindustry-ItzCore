@@ -1,6 +1,10 @@
 package me.itzblacky.ItzCore.Utils;
 
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -23,5 +27,17 @@ public class Utils {
             success = false;
         }
         return success;
+    }
+    public static <T> T loadConfig(String path, Class<T> toCast) {
+        T config = null;
+        try {
+            InputStream stream = new FileInputStream(path);
+            Yaml yaml = new Yaml(new Constructor(toCast));
+            config = yaml.load(stream);
+            stream.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return config;
     }
 }
