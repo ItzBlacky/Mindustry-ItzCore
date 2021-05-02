@@ -1,5 +1,7 @@
 package me.itzblacky.ItzCore.DependencyInterface.Utils;
 
+import java.util.List;
+
 public interface IUser {
 
     void setGroup(IGroup group);
@@ -10,4 +12,5 @@ public interface IUser {
 
     String getUUID();
     IGroup getGroup();
+    List<String> getPermissions();
 }

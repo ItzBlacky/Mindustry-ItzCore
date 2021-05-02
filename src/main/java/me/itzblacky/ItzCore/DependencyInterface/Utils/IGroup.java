@@ -12,4 +12,5 @@ public interface IGroup {
 
     String getName();
     IGroup getSubGroup();
+    List<String> getPermissions();
 }
